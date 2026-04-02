@@ -1,0 +1,62 @@
+[
+  {
+    "source": "FT Technology",
+    "feed_url": "https://www.ft.com/technology?format=rss",
+    "title": "Raspberry Pi profit surges as AI boom lifts demand",
+    "link": "https://www.ft.com/content/5c167591-80bb-4290-ae66-7d04112cbd1c",
+    "published": "Tue, 31 Mar 2026 16:31:34 GMT",
+    "author": null,
+    "summary": "Sales growth for UK computer company particularly strong in China and US",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 1,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 3,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 2,
+      "total_score": 13
+    }
+  },
+  {
+    "source": "FT Technology",
+    "feed_url": "https://www.ft.com/technology?format=rss",
+    "title": "Intel strikes $14bn deal with Apollo to reclaim Irish chip plant",
+    "link": "https://www.ft.com/content/50495d9c-fbb1-4551-8afd-ef4e3a5a5c89",
+    "published": "Wed, 01 Apr 2026 14:29:09 GMT",
+    "author": null,
+    "summary": "Chipmaker sold stake two years ago to help shore up its precarious finances",
+    "scores": {
+      "business_impact": 1,
+      "practical_application": 1,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 3,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 2,
+      "total_score": 12
+    }
+  },
+  {
+    "source": "Towards Data Science",
+    "feed_url": "https://towardsdatascience.com/feed",
+    "title": "Explainable AI in Production: A Neuro-Symbolic Model for Real-Time Fraud Detection",
+    "link": "https://towardsdatascience.com/explainable-ai-in-production-a-neuro-symbolic-model-for-real-time-fraud-detection/",
+    "published": "Mon, 30 Mar 2026 10:47:00 +0000",
+    "author": "Emmimal P Alexander",
+    "summary": "SHAP needs 30 ms to explain a fraud prediction. That explanation is stochastic, runs after the decision, and requires a background dataset you have to maintain at inference time. This article benchmarks a neuro-symbolic model that produces a deterministic, human-readable explanation in 0.9 ms — as a by-product of the forward pass itself — on the Kaggle Credit Card Fraud dataset. The speedup is 33×. The fraud recall is identical. The post Explainable AI in Production: A Neuro-Symbolic Model for Real-Time Fraud Detection appeared first on Towards Data Science .",
+    "scores": {
+      "business_impact": 2,
+      "practical_application": 2,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 2,
+      "total_score": 12
+    }
+  }
+]
