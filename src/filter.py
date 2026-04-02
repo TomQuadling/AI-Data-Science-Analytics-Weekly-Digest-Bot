@@ -26,12 +26,29 @@ INCLUSION_KEYWORDS = [
     "automation",
     "forecast",
     "forecasting",
-    "optimization",
     "optimisation",
+    "optimization",
     "decision-making",
     "decision making",
     "model",
     "models",
+    "fraud detection",
+    "productivity",
+    "workflow",
+    "workflows",
+    "operations",
+    "operational",
+    "supply chain",
+    "customer service",
+    "marketing",
+    "finance",
+    "manufacturing",
+    "warehouse",
+    "clinical",
+    "health",
+    "governance",
+    "regulation",
+    "compliance",
 ]
 
 EXCLUSION_KEYWORDS = [
@@ -40,6 +57,8 @@ EXCLUSION_KEYWORDS = [
     "top 10",
     "7 essential",
     "beginner",
+    "beginner’s guide",
+    "beginner's guide",
     "sponsored",
     "how to become",
     "getting started",
@@ -48,6 +67,37 @@ EXCLUSION_KEYWORDS = [
     "full stack",
     "quantum simulations",
     "quantum computing",
+    "chip",
+    "chips",
+    "chipmaker",
+    "semiconductor",
+    "semiconductors",
+    "processor",
+    "processors",
+    "gpu",
+    "gpus",
+    "data centre",
+    "data centres",
+    "data center",
+    "data centers",
+    "datacentre",
+    "datacentres",
+    "databricks blog rss",
+    "funding haul",
+    "ipo",
+    "valuation",
+    "retail investors",
+    "investors",
+    "satellite group",
+    "starlink",
+    "smart home",
+    "carplay",
+    "photo app",
+    "robotaxi",
+    "robotaxis",
+    "stream deck",
+    "website builder",
+    "github repositories",
 ]
 
 EXCLUSION_PATTERNS = [
@@ -95,7 +145,7 @@ def parse_date(date_str: str | None) -> datetime | None:
 
 
 def clean_text(text: str | None) -> str:
-    """Clean HTML, decode entities, remove boilerplate whitespace."""
+    """Clean HTML and normalise whitespace."""
     if not text:
         return ""
 
@@ -105,8 +155,27 @@ def clean_text(text: str | None) -> str:
     return text.strip()
 
 
+def remove_boilerplate(summary: str) -> str:
+    """Remove repeated feed boilerplate from summaries."""
+    boilerplate_phrases = [
+        "appeared first on",
+        "the post",
+    ]
+
+    cleaned = summary
+    lowered = cleaned.lower()
+
+    for phrase in boilerplate_phrases:
+        index = lowered.find(phrase)
+        if index != -1:
+            cleaned = cleaned[:index].strip()
+            lowered = cleaned.lower()
+
+    return cleaned.strip()
+
+
 def is_recent(date_str: str | None, lookback_days: int = LOOKBACK_DAYS) -> bool:
-    """Return True if published date is within the lookback window."""
+    """Return True if item is within the lookback window."""
     published_dt = parse_date(date_str)
     if published_dt is None:
         return False
@@ -116,7 +185,7 @@ def is_recent(date_str: str | None, lookback_days: int = LOOKBACK_DAYS) -> bool:
 
 
 def build_search_text(title: str | None, summary: str | None) -> str:
-    """Combine title and summary into one lowercase string for filtering."""
+    """Combine title and summary into one lowercase string."""
     return f"{title or ''} {summary or ''}".lower().strip()
 
 
@@ -142,6 +211,7 @@ def filter_items(items: list[dict]) -> list[dict]:
 
     for item in items:
         cleaned_summary = clean_text(item.get("summary"))
+        cleaned_summary = remove_boilerplate(cleaned_summary)
         search_text = build_search_text(item.get("title"), cleaned_summary)
 
         if not is_recent(item.get("published")):

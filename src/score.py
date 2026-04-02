@@ -5,7 +5,7 @@ from pathlib import Path
 INPUT_PATH = Path("data/processed/filtered_items.json")
 OUTPUT_PATH = Path("data/processed/scored_items.json")
 
-MINIMUM_SCORE_THRESHOLD = 12
+MINIMUM_SCORE_THRESHOLD = 10
 
 SOURCE_CREDIBILITY = {
     "FT Technology": 3,
@@ -31,18 +31,29 @@ BUSINESS_IMPACT_KEYWORDS = [
     "productivity",
     "customer",
     "customers",
+    "customer service",
     "operations",
     "operational",
+    "workflow",
+    "workflows",
     "supply chain",
     "forecast",
     "forecasting",
     "decision",
     "decision-making",
+    "decision making",
     "compliance",
     "risk",
     "risks",
     "growth",
     "performance",
+    "fraud detection",
+    "demand planning",
+    "marketing",
+    "finance",
+    "manufacturing",
+    "warehouse",
+    "clinical",
 ]
 
 PRACTICAL_APPLICATION_KEYWORDS = [
@@ -65,16 +76,17 @@ PRACTICAL_APPLICATION_KEYWORDS = [
     "tool",
     "tools",
     "platform",
+    "system",
+    "systems",
+    "model that",
+    "used ai to",
+    "using ai to",
 ]
 
 SIGNAL_STRENGTH_KEYWORDS = [
     "major",
     "launch",
     "launches",
-    "raised",
-    "funding",
-    "acquisition",
-    "deal",
     "partnership",
     "regulation",
     "regulatory",
@@ -86,8 +98,32 @@ SIGNAL_STRENGTH_KEYWORDS = [
     "enterprise",
     "production",
     "breakthrough",
-    "leader",
-    "impact",
+    "measurable",
+    "speedup",
+    "improved",
+    "improvement",
+    "rolled out",
+    "in production",
+]
+
+BUSINESS_USE_CASE_KEYWORDS = [
+    "used ai",
+    "using ai",
+    "implemented",
+    "deployed",
+    "rolled out",
+    "in production",
+    "customer service",
+    "operations",
+    "workflow",
+    "fraud detection",
+    "forecasting",
+    "supply chain",
+    "marketing",
+    "finance",
+    "manufacturing",
+    "warehouse",
+    "clinical",
 ]
 
 FAILURE_RISK_KEYWORDS = [
@@ -99,6 +135,7 @@ FAILURE_RISK_KEYWORDS = [
     "boycott",
     "ethical concerns",
     "shutdown",
+    "shut down",
     "exposed",
     "crackdown",
     "wary",
@@ -119,14 +156,13 @@ REGULATION_KEYWORDS = [
 ]
 
 THOUGHT_LEADERSHIP_KEYWORDS = [
-    "why",
-    "what happens",
     "what we need",
     "imperative",
     "future",
     "leadership",
     "should care",
-    "how",
+    "how well do they work",
+    "why",
 ]
 
 TOOLING_PLATFORM_KEYWORDS = [
@@ -175,6 +211,8 @@ ADJACENT_INDUSTRY_KEYWORDS = [
     "manufacturing",
     "warehouse",
     "consumer",
+    "clinical",
+    "medical",
 ]
 
 CORE_REGION_KEYWORDS = [
@@ -225,11 +263,11 @@ def score_business_impact(text: str) -> int:
     """Score business impact out of 5."""
     matches = count_keyword_matches(text, BUSINESS_IMPACT_KEYWORDS)
 
-    if matches >= 5:
+    if matches >= 6:
         return 5
     if matches >= 4:
         return 4
-    if matches >= 3:
+    if matches >= 2:
         return 3
     if matches >= 1:
         return 2
@@ -263,7 +301,10 @@ def score_signal_strength(text: str) -> int:
 
 
 def score_category_priority(text: str) -> int:
-    """Score category priority out of 3 based on your ranking logic."""
+    """Score category priority out of 3 based on newsletter priorities."""
+    if count_keyword_matches(text, BUSINESS_USE_CASE_KEYWORDS) >= 1:
+        return 3
+
     if count_keyword_matches(text, FAILURE_RISK_KEYWORDS) >= 1:
         return 3
 
@@ -276,7 +317,7 @@ def score_category_priority(text: str) -> int:
     if count_keyword_matches(text, TOOLING_PLATFORM_KEYWORDS) >= 1:
         return 1
 
-    return 3  # default to business use case if nothing else matches
+    return 1
 
 
 def score_source_credibility(source: str) -> int:
@@ -296,7 +337,7 @@ def score_adjacent_industry_bonus(text: str) -> int:
 
 def score_core_region_bonus(text: str) -> int:
     """Return region bonus."""
-    return 2 if count_keyword_matches(text, CORE_REGION_KEYWORDS) >= 1 else 0
+    return 1 if count_keyword_matches(text, CORE_REGION_KEYWORDS) >= 1 else 0
 
 
 def score_item(item: dict) -> dict:
@@ -368,8 +409,8 @@ def main() -> None:
     print(f"Saved scored items to {OUTPUT_PATH}")
 
     if scored_items:
-        print("\nTop 5 stories:")
-        for i, item in enumerate(scored_items[:5], start=1):
+        print("\nTop 10 stories:")
+        for i, item in enumerate(scored_items[:10], start=1):
             print(f"{i}. {item['title']} ({item['scores']['total_score']})")
 
 

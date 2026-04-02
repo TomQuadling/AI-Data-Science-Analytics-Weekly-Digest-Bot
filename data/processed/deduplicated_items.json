@@ -198,45 +198,5 @@
       "core_region_bonus": 1,
       "total_score": 10
     }
-  },
-  {
-    "source": "MIT Technology Review",
-    "feed_url": "https://www.technologyreview.com/feed/",
-    "title": "Shifting to AI model customization is an architectural imperative",
-    "link": "https://www.technologyreview.com/2026/03/31/1134762/shifting-to-ai-model-customization-is-an-architectural-imperative/",
-    "published": "Tue, 31 Mar 2026 14:12:50 +0000",
-    "author": "Barry Conklin",
-    "summary": "In the early days of large language models (LLMs), we grew accustomed to massive 10x jumps in reasoning and coding capability with every new model iteration. Today, those jumps have flattened into incremental gains. The exception is domain-specialized intelligence, where true step-function improvements are still the norm. When a model is fused with an organization’s…",
-    "scores": {
-      "business_impact": 1,
-      "practical_application": 2,
-      "signal_strength": 2,
-      "category_priority": 2,
-      "source_credibility": 3,
-      "fmcg_bonus": 0,
-      "adjacent_industry_bonus": 0,
-      "core_region_bonus": 0,
-      "total_score": 10
-    }
-  },
-  {
-    "source": "Towards Data Science",
-    "feed_url": "https://towardsdatascience.com/feed",
-    "title": "How to Handle Classical Data in Quantum Models?",
-    "link": "https://towardsdatascience.com/how-to-handle-classical-data-in-quantum-models/",
-    "published": "Thu, 02 Apr 2026 13:35:00 +0000",
-    "author": "Sara A. Metwalli",
-    "summary": "Workflows and encoding techniques in quantum machine learning",
-    "scores": {
-      "business_impact": 3,
-      "practical_application": 2,
-      "signal_strength": 1,
-      "category_priority": 3,
-      "source_credibility": 1,
-      "fmcg_bonus": 0,
-      "adjacent_industry_bonus": 0,
-      "core_region_bonus": 0,
-      "total_score": 10
-    }
   }
 ]
