@@ -13,7 +13,13 @@ SOURCE_CREDIBILITY = {
     "MIT Technology Review": 3,
     "McKinsey Insights": 3,
     "CIO": 2,
+    "Computerworld": 2,
+    "InfoWorld": 2,
+    "ZDNET": 2,
+    "Forbes CIO Network": 2,
     "VentureBeat AI": 2,
+    "Datanami": 2,
+    "TechCrunch AI": 2,
     "The Verge AI": 2,
 
     # Credible but biased / vendor-authored
@@ -59,7 +65,9 @@ BUSINESS_IMPACT_KEYWORDS = [
     "fraud detection", "demand planning", "marketing", "sales planning",
     "finance", "pricing", "procurement", "manufacturing",
     "warehouse", "clinical", "quality", "validation",
-    "business process", "reporting", "dashboard", "kpi", "kpis",
+    "business process", "reporting", "dashboard", "dashboards",
+    "kpi", "kpis", "business intelligence", "bi",
+    "decision support", "enterprise analytics",
 ]
 
 PRACTICAL_APPLICATION_KEYWORDS = [
@@ -68,7 +76,8 @@ PRACTICAL_APPLICATION_KEYWORDS = [
     "production", "adopted", "adoption", "workflow", "workflows",
     "tool", "tools", "platform", "system", "systems", "process",
     "automated", "automation", "reusable", "weekly", "replaced",
-    "validation", "quality checks",
+    "validation", "quality checks", "real-time decision support",
+    "plain language", "semantic layer",
 ]
 
 SIGNAL_STRENGTH_KEYWORDS = [
@@ -76,7 +85,7 @@ SIGNAL_STRENGTH_KEYWORDS = [
     "shutdown", "failure", "risk", "warning", "transformation", "enterprise",
     "production", "breakthrough", "measurable", "speedup", "improved",
     "improvement", "rolled out", "in production", "operationalize",
-    "operationalise", "scaled", "scale",
+    "operationalise", "scaled", "scale", "redefine", "real-time",
 ]
 
 BUSINESS_USE_CASE_KEYWORDS = [
@@ -85,7 +94,8 @@ BUSINESS_USE_CASE_KEYWORDS = [
     "fraud detection", "forecasting", "supply chain", "marketing", "sales",
     "finance", "pricing", "procurement", "manufacturing", "warehouse",
     "clinical", "quality checks", "validation", "reporting", "dashboard",
-    "business process",
+    "dashboards", "business process", "business intelligence", "decision support",
+    "enterprise analytics",
 ]
 
 FAILURE_RISK_KEYWORDS = [
@@ -103,7 +113,8 @@ REGULATION_KEYWORDS = [
 THOUGHT_LEADERSHIP_KEYWORDS = [
     "what we need", "imperative", "future", "leadership",
     "should care", "how well do they work", "lessons",
-    "playbook", "teaming",
+    "playbook", "teaming", "operating layer", "enterprise value",
+    "operating model", "execution",
 ]
 
 TOOLING_PLATFORM_KEYWORDS = [
@@ -128,6 +139,46 @@ COMPANY_IMPLEMENTATION_KEYWORDS = [
     "company", "companies", "business", "businesses", "customer",
     "customers", "organization", "organisation", "retailer",
     "retailers", "hospital", "manufacturer", "enterprise",
+]
+
+ENTERPRISE_ANALYTICS_KEYWORDS = [
+    "business intelligence",
+    "bi",
+    "dashboards",
+    "dashboard",
+    "enterprise analytics",
+    "decision support",
+    "decision intelligence",
+    "semantic layer",
+    "governed enterprise data",
+    "distributed systems",
+    "distributed data",
+    "real-time systems",
+    "real-time decision support",
+    "metadata",
+    "data catalogs",
+    "governance layers",
+    "persona-specific",
+]
+
+OPERATING_LAYER_KEYWORDS = [
+    "operating layer",
+    "enterprise ai",
+    "enterprise value",
+    "operating model",
+    "execution",
+    "adoption",
+    "operationalize ai",
+    "operationalise ai",
+]
+
+CAREER_SKILLS_TITLE_KEYWORDS = [
+    "skills",
+    "must master",
+    "hiring freeze",
+    "roadmap",
+    "conference matters",
+    "currency",
 ]
 
 FMCG_KEYWORDS = [
@@ -270,8 +321,17 @@ def score_company_implementation_bonus(text: str) -> int:
     return 1 if has_company_signal and has_use_case_signal else 0
 
 
+def score_enterprise_analytics_bonus(text: str) -> int:
+    return 2 if count_keyword_matches(text, ENTERPRISE_ANALYTICS_KEYWORDS) >= 2 else 0
+
+
+def score_operating_layer_bonus(text: str) -> int:
+    return 1 if count_keyword_matches(text, OPERATING_LAYER_KEYWORDS) >= 1 else 0
+
+
 def apply_source_specific_adjustments(item: dict, total_score: int, text: str) -> int:
     source = item.get("source", "")
+    title = (item.get("title", "") or "").lower()
 
     if source in {"Towards Data Science", "KDnuggets"}:
         business_matches = count_keyword_matches(text, BUSINESS_IMPACT_KEYWORDS)
@@ -294,6 +354,13 @@ def apply_source_specific_adjustments(item: dict, total_score: int, text: str) -
         else:
             total_score -= 1
 
+    # Penalise broad career/skills pieces unless strongly tied to business use
+    if contains_any(title, CAREER_SKILLS_TITLE_KEYWORDS):
+        if count_keyword_matches(text, BUSINESS_USE_CASE_KEYWORDS) == 0 and count_keyword_matches(text, ENTERPRISE_ANALYTICS_KEYWORDS) < 2:
+            total_score -= 3
+        else:
+            total_score -= 1
+
     return total_score
 
 
@@ -312,6 +379,8 @@ def score_item(item: dict) -> dict:
     business_upskilling_bonus = score_business_upskilling_bonus(text)
     measurable_outcome_bonus = score_measurable_outcome_bonus(text)
     company_implementation_bonus = score_company_implementation_bonus(text)
+    enterprise_analytics_bonus = score_enterprise_analytics_bonus(text)
+    operating_layer_bonus = score_operating_layer_bonus(text)
 
     total_score = (
         business_impact
@@ -325,6 +394,8 @@ def score_item(item: dict) -> dict:
         + business_upskilling_bonus
         + measurable_outcome_bonus
         + company_implementation_bonus
+        + enterprise_analytics_bonus
+        + operating_layer_bonus
     )
 
     total_score = apply_source_specific_adjustments(item, total_score, text)
@@ -343,6 +414,8 @@ def score_item(item: dict) -> dict:
             "business_upskilling_bonus": business_upskilling_bonus,
             "measurable_outcome_bonus": measurable_outcome_bonus,
             "company_implementation_bonus": company_implementation_bonus,
+            "enterprise_analytics_bonus": enterprise_analytics_bonus,
+            "operating_layer_bonus": operating_layer_bonus,
             "total_score": total_score,
         },
     }
