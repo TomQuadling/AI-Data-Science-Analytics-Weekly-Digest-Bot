@@ -13,6 +13,13 @@ SOURCE_CREDIBILITY = {
     "The Verge AI": 2,
     "Azure Blog": 2,
     "Databricks Blog": 2,
+    "AWS Machine Learning Blog": 2,
+    "Google Cloud AI Blog": 2,
+    "Power BI Blog": 2,
+    "FT Big Data": 3,
+    "AWS AI News Blog": 2,
+    "Google AI Blog": 2,
+    "VentureBeat AI": 2,
     "Towards Data Science": 1,
     "KDnuggets": 1,
 }
@@ -50,10 +57,18 @@ BUSINESS_IMPACT_KEYWORDS = [
     "fraud detection",
     "demand planning",
     "marketing",
+    "sales planning",
     "finance",
+    "pricing",
+    "procurement",
     "manufacturing",
     "warehouse",
     "clinical",
+    "quality",
+    "validation",
+    "business process",
+    "reporting",
+    "dashboard",
 ]
 
 PRACTICAL_APPLICATION_KEYWORDS = [
@@ -78,9 +93,14 @@ PRACTICAL_APPLICATION_KEYWORDS = [
     "platform",
     "system",
     "systems",
-    "model that",
-    "used ai to",
-    "using ai to",
+    "process",
+    "automated",
+    "automation",
+    "reusable",
+    "weekly",
+    "replaced",
+    "validation",
+    "quality checks",
 ]
 
 SIGNAL_STRENGTH_KEYWORDS = [
@@ -104,6 +124,10 @@ SIGNAL_STRENGTH_KEYWORDS = [
     "improvement",
     "rolled out",
     "in production",
+    "operationalize",
+    "operationalise",
+    "scaled",
+    "scale",
 ]
 
 BUSINESS_USE_CASE_KEYWORDS = [
@@ -120,10 +144,18 @@ BUSINESS_USE_CASE_KEYWORDS = [
     "forecasting",
     "supply chain",
     "marketing",
+    "sales",
     "finance",
+    "pricing",
+    "procurement",
     "manufacturing",
     "warehouse",
     "clinical",
+    "quality checks",
+    "validation",
+    "reporting",
+    "dashboard",
+    "business process",
 ]
 
 FAILURE_RISK_KEYWORDS = [
@@ -153,6 +185,8 @@ REGULATION_KEYWORDS = [
     "policies",
     "fda",
     "sovereignty",
+    "eu ai act",
+    "european commission",
 ]
 
 THOUGHT_LEADERSHIP_KEYWORDS = [
@@ -162,7 +196,10 @@ THOUGHT_LEADERSHIP_KEYWORDS = [
     "leadership",
     "should care",
     "how well do they work",
-    "why",
+    "lessons",
+    "playbook",
+    "workflow",
+    "teaming",
 ]
 
 TOOLING_PLATFORM_KEYWORDS = [
@@ -172,11 +209,29 @@ TOOLING_PLATFORM_KEYWORDS = [
     "power bi",
     "fabric",
     "sql",
-    "kubernetes",
     "gemini",
     "chatgpt",
     "claude",
     "llmops",
+    "vertex ai",
+    "bedrock",
+    "sagemaker",
+]
+
+BUSINESS_UPSKILLING_KEYWORDS = [
+    "reusable ai workflow",
+    "reusable workflow",
+    "quality checks",
+    "validation",
+    "workflow",
+    "weekly",
+    "habit",
+    "process",
+    "operational efficiency",
+    "teaming",
+    "productivity",
+    "applied to work",
+    "real workflows",
 ]
 
 FMCG_KEYWORDS = [
@@ -340,6 +395,25 @@ def score_core_region_bonus(text: str) -> int:
     return 1 if count_keyword_matches(text, CORE_REGION_KEYWORDS) >= 1 else 0
 
 
+def score_business_upskilling_bonus(text: str) -> int:
+    """Return bonus for practical work-improvement inspiration."""
+    return 1 if count_keyword_matches(text, BUSINESS_UPSKILLING_KEYWORDS) >= 2 else 0
+
+
+def apply_source_specific_adjustments(item: dict, total_score: int, text: str) -> int:
+    """Apply source-specific adjustments for noisier sources."""
+    source = item.get("source", "")
+
+    # TDS and KDnuggets should only rank well if clearly tied to business/workflow value
+    if source in {"Towards Data Science", "KDnuggets"}:
+        business_matches = count_keyword_matches(text, BUSINESS_IMPACT_KEYWORDS)
+        use_case_matches = count_keyword_matches(text, BUSINESS_USE_CASE_KEYWORDS)
+        if business_matches == 0 and use_case_matches == 0:
+            total_score -= 2
+
+    return total_score
+
+
 def score_item(item: dict) -> dict:
     """Score one item and return an enriched dictionary."""
     text = build_search_text(item)
@@ -353,6 +427,7 @@ def score_item(item: dict) -> dict:
     fmcg_bonus = score_fmcg_bonus(text)
     adjacent_industry_bonus = score_adjacent_industry_bonus(text)
     core_region_bonus = score_core_region_bonus(text)
+    business_upskilling_bonus = score_business_upskilling_bonus(text)
 
     total_score = (
         business_impact
@@ -363,7 +438,10 @@ def score_item(item: dict) -> dict:
         + fmcg_bonus
         + adjacent_industry_bonus
         + core_region_bonus
+        + business_upskilling_bonus
     )
+
+    total_score = apply_source_specific_adjustments(item, total_score, text)
 
     scored_item = {
         **item,
@@ -376,6 +454,7 @@ def score_item(item: dict) -> dict:
             "fmcg_bonus": fmcg_bonus,
             "adjacent_industry_bonus": adjacent_industry_bonus,
             "core_region_bonus": core_region_bonus,
+            "business_upskilling_bonus": business_upskilling_bonus,
             "total_score": total_score,
         },
     }
