@@ -41,7 +41,10 @@ INCLUSION_KEYWORDS = [
     "supply chain",
     "customer service",
     "marketing",
+    "sales",
     "finance",
+    "pricing",
+    "procurement",
     "manufacturing",
     "warehouse",
     "clinical",
@@ -49,6 +52,14 @@ INCLUSION_KEYWORDS = [
     "governance",
     "regulation",
     "compliance",
+    "quality",
+    "validation",
+    "business process",
+    "process improvement",
+    "reporting",
+    "insight",
+    "dashboard",
+    "planning",
 ]
 
 EXCLUSION_KEYWORDS = [
@@ -61,7 +72,6 @@ EXCLUSION_KEYWORDS = [
     "beginner's guide",
     "sponsored",
     "how to become",
-    "getting started",
     "free web apis",
     "website builders",
     "full stack",
@@ -82,7 +92,6 @@ EXCLUSION_KEYWORDS = [
     "data centers",
     "datacentre",
     "datacentres",
-    "databricks blog rss",
     "funding haul",
     "ipo",
     "valuation",
@@ -96,15 +105,56 @@ EXCLUSION_KEYWORDS = [
     "robotaxi",
     "robotaxis",
     "stream deck",
-    "website builder",
-    "github repositories",
+    "creative architect",
+    "for the creative",
+    "game plan is all about business",
 ]
 
 EXCLUSION_PATTERNS = [
     r"\btop\s+\d+\b",
     r"\b\d+\s+essential\b",
     r"\bbeginner'?s guide\b",
-    r"\bgetting started\b",
+    r"\bhow to become\b",
+]
+
+PUBLIC_SECTOR_HEAVY_KEYWORDS = [
+    "public sector",
+    "government institutions",
+    "government agency",
+    "government agencies",
+    "pentagon",
+    "defense department",
+    "ministry",
+]
+
+BUSINESS_KEEP_KEYWORDS = [
+    "workflow",
+    "workflows",
+    "operations",
+    "operational",
+    "business process",
+    "process improvement",
+    "productivity",
+    "reporting",
+    "dashboard",
+    "validation",
+    "quality",
+    "fraud detection",
+    "customer service",
+    "supply chain",
+    "forecasting",
+    "planning",
+    "manufacturing",
+    "warehouse",
+    "marketing",
+    "sales",
+    "finance",
+    "pricing",
+    "procurement",
+    "compliance",
+    "governance",
+    "deployment",
+    "in production",
 ]
 
 
@@ -122,7 +172,7 @@ def save_items(items: list[dict], output_path: Path) -> None:
         json.dump(items, f, indent=2, ensure_ascii=False)
 
 
-def parse_date(date_str: str | None) -> datetime | None:
+def parse_date(date_str: str | None):
     """Parse RSS date strings into timezone-aware datetimes."""
     if not date_str:
         return None
@@ -160,6 +210,8 @@ def remove_boilerplate(summary: str) -> str:
     boilerplate_phrases = [
         "appeared first on",
         "the post",
+        "sign up here",
+        "to get stories like this in your inbox first",
     ]
 
     cleaned = summary
@@ -171,7 +223,7 @@ def remove_boilerplate(summary: str) -> str:
             cleaned = cleaned[:index].strip()
             lowered = cleaned.lower()
 
-    return cleaned.strip()
+    return cleaned.strip(" .-")
 
 
 def is_recent(date_str: str | None, lookback_days: int = LOOKBACK_DAYS) -> bool:
@@ -189,12 +241,21 @@ def build_search_text(title: str | None, summary: str | None) -> str:
     return f"{title or ''} {summary or ''}".lower().strip()
 
 
+def contains_any(text: str, keywords: list[str]) -> bool:
+    """Return True if any keyword appears in text."""
+    return any(keyword in text for keyword in keywords)
+
+
 def is_excluded(search_text: str) -> bool:
     """Return True if item matches exclusion keywords or patterns."""
-    if any(keyword in search_text for keyword in EXCLUSION_KEYWORDS):
+    if contains_any(search_text, EXCLUSION_KEYWORDS):
         return True
 
     if any(re.search(pattern, search_text) for pattern in EXCLUSION_PATTERNS):
+        return True
+
+    # Exclude public-sector/government-heavy stories unless they clearly translate to business use
+    if contains_any(search_text, PUBLIC_SECTOR_HEAVY_KEYWORDS) and not contains_any(search_text, BUSINESS_KEEP_KEYWORDS):
         return True
 
     return False
@@ -202,7 +263,7 @@ def is_excluded(search_text: str) -> bool:
 
 def is_relevant(search_text: str) -> bool:
     """Return True if item matches at least one inclusion keyword."""
-    return any(keyword in search_text for keyword in INCLUSION_KEYWORDS)
+    return contains_any(search_text, INCLUSION_KEYWORDS)
 
 
 def filter_items(items: list[dict]) -> list[dict]:
