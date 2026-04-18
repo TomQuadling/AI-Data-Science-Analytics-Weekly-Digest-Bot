@@ -12,11 +12,20 @@ RSS_FEEDS = [
     {"name": "Databricks Blog", "url": "https://www.databricks.com/blog/rss.xml"},
     {"name": "Towards Data Science", "url": "https://towardsdatascience.com/feed"},
     {"name": "KDnuggets", "url": "https://www.kdnuggets.com/feed"},
+
+    # New sources
+    {"name": "AWS Machine Learning Blog", "url": "https://aws.amazon.com/blogs/machine-learning/feed/"},
+    {"name": "Google Cloud AI Blog", "url": "https://cloud.google.com/blog/products/ai-machine-learning/rss/"},
+    {"name": "Power BI Blog", "url": "https://powerbi.microsoft.com/en-us/blog/feed/"},
+    {"name": "FT Big Data", "url": "https://www.ft.com/big-data?format=rss"},
+    {"name": "AWS AI News Blog", "url": "https://aws.amazon.com/blogs/aws/category/artificial-intelligence/amazon-machine-learning/feed/"},
+    {"name": "Google AI Blog", "url": "https://blog.google/technology/ai/rss/"},
+    {"name": "VentureBeat AI", "url": "https://venturebeat.com/category/ai/feed/"},
 ]
 
 
 def parse_feed(feed_name: str, feed_url: str) -> list[dict]:
-    """Parse one RSS feed and return a list of standardised article dictionaries."""
+    """Parse one RSS feed and return a list of normalised article dictionaries."""
     parsed_feed = feedparser.parse(feed_url)
     items = []
 
