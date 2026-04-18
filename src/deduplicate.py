@@ -1,5 +1,6 @@
 import json
 import re
+from collections import Counter
 from difflib import SequenceMatcher
 from pathlib import Path
 
@@ -9,6 +10,18 @@ OUTPUT_PATH = Path("data/processed/deduplicated_items.json")
 
 MAX_ITEMS_TO_KEEP = 10
 SIMILARITY_THRESHOLD = 0.72
+MAX_PER_SOURCE = 2
+MAX_VENDOR_AUTHORED = 2
+
+VENDOR_AUTHORED_SOURCES = {
+    "Azure Blog",
+    "Databricks Blog",
+    "AWS Machine Learning Blog",
+    "AWS AI News Blog",
+    "Google Cloud AI Blog",
+    "Google AI Blog",
+    "Power BI Blog",
+}
 
 
 def load_items(input_path: Path) -> list[dict]:
@@ -62,16 +75,39 @@ def is_duplicate(candidate: dict, kept_items: list[dict]) -> bool:
     return False
 
 
+def passes_diversity_rules(candidate: dict, kept_items: list[dict]) -> bool:
+    """Apply source and vendor diversity caps."""
+    source_counts = Counter(item.get("source", "") for item in kept_items)
+    vendor_count = sum(
+        1 for item in kept_items if item.get("source", "") in VENDOR_AUTHORED_SOURCES
+    )
+
+    candidate_source = candidate.get("source", "")
+
+    if source_counts[candidate_source] >= MAX_PER_SOURCE:
+        return False
+
+    if candidate_source in VENDOR_AUTHORED_SOURCES and vendor_count >= MAX_VENDOR_AUTHORED:
+        return False
+
+    return True
+
+
 def deduplicate_items(items: list[dict]) -> list[dict]:
     """
-    Keep highest-scoring unique items.
+    Keep highest-scoring unique items while enforcing diversity rules.
     Assumes input is already sorted highest score first.
     """
     unique_items = []
 
     for item in items:
-        if not is_duplicate(item, unique_items):
-            unique_items.append(item)
+        if is_duplicate(item, unique_items):
+            continue
+
+        if not passes_diversity_rules(item, unique_items):
+            continue
+
+        unique_items.append(item)
 
         if len(unique_items) >= MAX_ITEMS_TO_KEEP:
             break
