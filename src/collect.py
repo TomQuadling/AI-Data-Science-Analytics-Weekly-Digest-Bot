@@ -5,6 +5,7 @@ import feedparser
 
 
 RSS_FEEDS = [
+    # Existing core / previous broader pool
     {"name": "FT Technology", "url": "https://www.ft.com/technology?format=rss"},
     {"name": "MIT Technology Review", "url": "https://www.technologyreview.com/feed/"},
     {"name": "The Verge AI", "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"},
@@ -12,8 +13,6 @@ RSS_FEEDS = [
     {"name": "Databricks Blog", "url": "https://www.databricks.com/blog/rss.xml"},
     {"name": "Towards Data Science", "url": "https://towardsdatascience.com/feed"},
     {"name": "KDnuggets", "url": "https://www.kdnuggets.com/feed"},
-
-    # New sources
     {"name": "AWS Machine Learning Blog", "url": "https://aws.amazon.com/blogs/machine-learning/feed/"},
     {"name": "Google Cloud AI Blog", "url": "https://cloud.google.com/blog/products/ai-machine-learning/rss/"},
     {"name": "Power BI Blog", "url": "https://powerbi.microsoft.com/en-us/blog/feed/"},
@@ -21,6 +20,16 @@ RSS_FEEDS = [
     {"name": "AWS AI News Blog", "url": "https://aws.amazon.com/blogs/aws/category/artificial-intelligence/amazon-machine-learning/feed/"},
     {"name": "Google AI Blog", "url": "https://blog.google/technology/ai/rss/"},
     {"name": "VentureBeat AI", "url": "https://venturebeat.com/category/ai/feed/"},
+
+    # New non-vendor, more business-facing additions
+    {"name": "CIO", "url": "https://www.cio.com/feed/"},
+    {"name": "InfoWorld", "url": "https://www.infoworld.com/index.rss"},
+    {"name": "ZDNET", "url": "https://www.zdnet.com/news/rss.xml"},
+    {"name": "Computerworld", "url": "https://www.computerworld.com/index.rss"},
+    {"name": "Forbes CIO Network", "url": "https://www.forbes.com/cio-network/feed/"},
+    {"name": "Datanami", "url": "https://www.datanami.com/feed/"},
+    {"name": "TechCrunch AI", "url": "https://techcrunch.com/category/artificial-intelligence/feed/"},
+    {"name": "Harvard Business Review", "url": "https://hbr.org/feed"},
 ]
 
 
