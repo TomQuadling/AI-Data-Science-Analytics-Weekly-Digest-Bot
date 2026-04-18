@@ -9,19 +9,33 @@ MINIMUM_SCORE_THRESHOLD = 10
 
 SOURCE_CREDIBILITY = {
     "FT Technology": 3,
-    "MIT Technology Review": 3,
-    "The Verge AI": 2,
-    "Azure Blog": 2,
-    "Databricks Blog": 2,
-    "AWS Machine Learning Blog": 2,
-    "Google Cloud AI Blog": 2,
-    "Power BI Blog": 2,
     "FT Big Data": 3,
-    "AWS AI News Blog": 2,
-    "Google AI Blog": 2,
+    "MIT Technology Review": 3,
     "VentureBeat AI": 2,
+    "The Verge AI": 2,
+
+    # Credible but biased / vendor-authored
+    "Azure Blog": 1,
+    "Databricks Blog": 1,
+    "AWS Machine Learning Blog": 1,
+    "AWS AI News Blog": 1,
+    "Google Cloud AI Blog": 1,
+    "Google AI Blog": 1,
+    "Power BI Blog": 1,
+
+    # Mixed practitioner sources
     "Towards Data Science": 1,
     "KDnuggets": 1,
+}
+
+VENDOR_AUTHORED_SOURCES = {
+    "Azure Blog",
+    "Databricks Blog",
+    "AWS Machine Learning Blog",
+    "AWS AI News Blog",
+    "Google Cloud AI Blog",
+    "Google AI Blog",
+    "Power BI Blog",
 }
 
 BUSINESS_IMPACT_KEYWORDS = [
@@ -198,7 +212,6 @@ THOUGHT_LEADERSHIP_KEYWORDS = [
     "how well do they work",
     "lessons",
     "playbook",
-    "workflow",
     "teaming",
 ]
 
@@ -287,6 +300,49 @@ CORE_REGION_KEYWORDS = [
     "nhs",
 ]
 
+VENDOR_PROMO_KEYWORDS = [
+    "weekly roundup",
+    "week in review",
+    "roundup",
+    "and more",
+    "preview",
+    "best practices",
+    "get started",
+    "getting started",
+    "amazon bedrock",
+    "sagemaker",
+    "agent registry",
+    "aws generative ai services",
+    "vertex ai",
+    "fabric",
+    "copilot",
+]
+
+PUBLIC_SECTOR_HEAVY_KEYWORDS = [
+    "public sector",
+    "government institutions",
+    "government agency",
+    "government agencies",
+    "pentagon",
+    "ministry",
+    "defense",
+    "defence",
+]
+
+BUSINESS_TRANSFERABLE_KEYWORDS = [
+    "operations",
+    "workflow",
+    "compliance",
+    "governance",
+    "regulated industries",
+    "risk",
+    "productivity",
+    "cost",
+    "efficiency",
+    "deployment",
+    "production",
+]
+
 
 def load_items(input_path: Path) -> list[dict]:
     """Load filtered items from JSON."""
@@ -312,6 +368,11 @@ def build_search_text(item: dict) -> str:
 def count_keyword_matches(text: str, keywords: list[str]) -> int:
     """Count how many keywords appear in the text."""
     return sum(1 for keyword in keywords if keyword in text)
+
+
+def contains_any(text: str, keywords: list[str]) -> bool:
+    """Return True if any keyword appears in the text."""
+    return any(keyword in text for keyword in keywords)
 
 
 def score_business_impact(text: str) -> int:
@@ -401,7 +462,7 @@ def score_business_upskilling_bonus(text: str) -> int:
 
 
 def apply_source_specific_adjustments(item: dict, total_score: int, text: str) -> int:
-    """Apply source-specific adjustments for noisier sources."""
+    """Apply source-specific and editorial penalties."""
     source = item.get("source", "")
 
     # TDS and KDnuggets should only rank well if clearly tied to business/workflow value
@@ -410,6 +471,21 @@ def apply_source_specific_adjustments(item: dict, total_score: int, text: str) -
         use_case_matches = count_keyword_matches(text, BUSINESS_USE_CASE_KEYWORDS)
         if business_matches == 0 and use_case_matches == 0:
             total_score -= 2
+
+    # Vendor-authored content gets a slight independence penalty
+    if source in VENDOR_AUTHORED_SOURCES:
+        total_score -= 1
+
+    # Penalise overtly promotional / roundup content
+    promo_matches = count_keyword_matches(text, VENDOR_PROMO_KEYWORDS)
+    if promo_matches >= 2:
+        total_score -= 2
+    elif promo_matches == 1:
+        total_score -= 1
+
+    # Penalise public-sector heavy content unless clearly transferable to business
+    if contains_any(text, PUBLIC_SECTOR_HEAVY_KEYWORDS) and not contains_any(text, BUSINESS_TRANSFERABLE_KEYWORDS):
+        total_score -= 2
 
     return total_score
 
