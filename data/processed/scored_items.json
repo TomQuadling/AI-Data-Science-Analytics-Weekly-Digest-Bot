@@ -1,0 +1,317 @@
+[
+  {
+    "source": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "title": "Rede Mater Dei de Saúde: Monitoring AI agents in the revenue cycle with Amazon Bedrock AgentCore",
+    "link": "https://aws.amazon.com/blogs/machine-learning/rede-mater-dei-de-saude-monitoring-ai-agents-in-the-revenue-cycle-with-amazon-bedrock-agentcore/",
+    "published": "Wed, 15 Apr 2026 15:15:23 +0000",
+    "author": "Renata Salvador Grande",
+    "summary": "This post is cowritten by Renata Salvador Grande, Gabriel Bueno and Paulo Laurentys at Rede Mater Dei de Saúde. The growing adoption of multi-agent AI systems is redefining critical operations in healthcare. In large hospital networks, where thousands of decisions directly impact cash flow, service delivery times, and the risk of claim denials, the ability […]",
+    "scores": {
+      "business_impact": 4,
+      "practical_application": 3,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 2,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 1,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 15
+    }
+  },
+  {
+    "source": "KDnuggets",
+    "feed_url": "https://www.kdnuggets.com/feed",
+    "title": "5 Useful Python Scripts for Advanced Data Validation & Quality Checks",
+    "link": "https://www.kdnuggets.com/5-useful-python-scripts-for-advanced-data-validation-quality-checks",
+    "published": "Fri, 17 Apr 2026 12:00:58 +0000",
+    "author": "Bala Priya C",
+    "summary": "From missing values to schema mismatches, data issues appear in many forms. These five Python scripts provide smart, automated validation for modern data workflows",
+    "scores": {
+      "business_impact": 4,
+      "practical_application": 4,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 1,
+      "total_score": 14
+    }
+  },
+  {
+    "source": "MIT Technology Review",
+    "feed_url": "https://www.technologyreview.com/feed/",
+    "title": "Making AI operational in constrained public sector environments",
+    "link": "https://www.technologyreview.com/2026/04/16/1135216/making-ai-operational-in-constrained-public-sector-environments/",
+    "published": "Thu, 16 Apr 2026 13:00:00 +0000",
+    "author": "MIT Technology Review Insights",
+    "summary": "The AI boom has hit across industries, and public sector organizations are facing pressure to accelerate adoption. At the same time, government institutions face distinct constraints around security, governance, and operations that set them apart from their business counterparts. For this reason, purpose-built small language models (SLMs) offer a promising path to operationalize AI in…",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 2,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 3,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 13
+    }
+  },
+  {
+    "source": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "title": "How Automated Reasoning checks in Amazon Bedrock transform generative AI compliance",
+    "link": "https://aws.amazon.com/blogs/machine-learning/how-automated-reasoning-checks-in-amazon-bedrock-transform-generative-ai-compliance/",
+    "published": "Thu, 16 Apr 2026 17:34:42 +0000",
+    "author": "Nafi Diallo",
+    "summary": "In this post, you'll learn why probabilistic AI validation falls short in regulated industries and how Automated Reasoning checks use formal verification to deliver mathematically proven results. You'll also see how customers across six industries use this technology to produce formally verified, auditable AI outputs, and how to get started",
+    "scores": {
+      "business_impact": 4,
+      "practical_application": 3,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 2,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 13
+    }
+  },
+  {
+    "source": "AWS AI News Blog",
+    "feed_url": "https://aws.amazon.com/blogs/aws/category/artificial-intelligence/amazon-machine-learning/feed/",
+    "title": "AWS Weekly Roundup: Claude Mythos Preview in Amazon Bedrock, AWS Agent Registry, and more (April 13, 2026)",
+    "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-claude-mythos-preview-in-amazon-bedrock-aws-agent-registry-and-more-april-13-2026/",
+    "published": "Mon, 13 Apr 2026 16:16:20 +0000",
+    "author": "Micah Walter",
+    "summary": "In my last Week in Review post, I mentioned how much time I’ve been spending on AI-Driven Development Lifecycle (AI-DLC) workshops with customers this year. A common theme in those sessions is the need for better cost visibility. Teams are moving fast with AI, but as they go from experimenting to full production, finance and […]",
+    "scores": {
+      "business_impact": 4,
+      "practical_application": 2,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 2,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 13
+    }
+  },
+  {
+    "source": "FT Technology",
+    "feed_url": "https://www.ft.com/technology?format=rss",
+    "title": "The risks of Mythos are no myth",
+    "link": "https://www.ft.com/content/f07ffad1-8453-48c9-b801-2fcb0c0daf58",
+    "published": "Fri, 17 Apr 2026 17:27:47 GMT",
+    "author": null,
+    "summary": "America is putting too much trust in the AI industry’s ability to police itself",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 1,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 3,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 12
+    }
+  },
+  {
+    "source": "Towards Data Science",
+    "feed_url": "https://towardsdatascience.com/feed",
+    "title": "Beyond Prompting: Using Agent Skills in Data Science",
+    "link": "https://towardsdatascience.com/beyond-prompting-using-agent-skills-in-data-science/",
+    "published": "Fri, 17 Apr 2026 16:30:00 +0000",
+    "author": "Yu Dong",
+    "summary": "How I turned my eight-year weekly visualization habit into a reusable AI workflow",
+    "scores": {
+      "business_impact": 2,
+      "practical_application": 3,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 1,
+      "business_upskilling_bonus": 1,
+      "total_score": 12
+    }
+  },
+  {
+    "source": "KDnuggets",
+    "feed_url": "https://www.kdnuggets.com/feed",
+    "title": "Collaborative AI Systems: Human-AI Teaming Workflows",
+    "link": "https://www.kdnuggets.com/collaborative-ai-systems-human-ai-teaming-workflows",
+    "published": "Tue, 14 Apr 2026 14:00:31 +0000",
+    "author": "Nate Rosidi",
+    "summary": "Everyone says they're \"collaborating\" with AI. Most are just giving orders and accepting whatever comes back",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 3,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 1,
+      "total_score": 12
+    }
+  },
+  {
+    "source": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "title": "Transform retail with AWS generative AI services",
+    "link": "https://aws.amazon.com/blogs/machine-learning/transform-retail-with-aws-generative-ai-services/",
+    "published": "Thu, 16 Apr 2026 17:39:56 +0000",
+    "author": "Bhavya Chugh",
+    "summary": "Online retailers face a persistent challenge: shoppers struggle to determine the fit and look when ordering online, leading to increased returns and decreased purchase confidence. The cost? Lost revenue, operational overhead, and customer frustration. Meanwhile, consumers increasingly expect immersive, interactive shopping experiences that bridge the gap between online and in-store retail. Retailers implementing virtual try-on […]",
+    "scores": {
+      "business_impact": 4,
+      "practical_application": 1,
+      "signal_strength": 1,
+      "category_priority": 1,
+      "source_credibility": 2,
+      "fmcg_bonus": 2,
+      "adjacent_industry_bonus": 1,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 12
+    }
+  },
+  {
+    "source": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "title": "Best practices to run inference on Amazon SageMaker HyperPod",
+    "link": "https://aws.amazon.com/blogs/machine-learning/best-practices-to-run-inference-on-amazon-sagemaker-hyperpod/",
+    "published": "Tue, 14 Apr 2026 18:09:22 +0000",
+    "author": "Vinay Arora",
+    "summary": "This post explores how Amazon SageMaker HyperPod provides a comprehensive solution for inference workloads. We walk you through the platform’s key capabilities for dynamic scaling, simplified deployment, and intelligent resource management. By the end of this post, you’ll understand how to use the HyperPod automated infrastructure, cost optimization features, and performance enhancements to reduce your total cost of ownership by up to 40% while accelerating your generative AI deployments from concept to production",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 4,
+      "signal_strength": 2,
+      "category_priority": 1,
+      "source_credibility": 2,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 12
+    }
+  },
+  {
+    "source": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "title": "From hours to minutes: How Agentic AI gave marketers time back for what matters",
+    "link": "https://aws.amazon.com/blogs/machine-learning/from-hours-to-minutes-how-agentic-ai-gave-marketers-time-back-for-what-matters/",
+    "published": "Fri, 17 Apr 2026 17:12:10 +0000",
+    "author": "Ishara Premadasa",
+    "summary": "In this post, we share how AWS Marketing’s Technology, AI, and Analytics (TAA) team worked with Gradial to build an agentic AI solution on Amazon Bedrock for accelerating content publishing workflows",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 2,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 2,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 11
+    }
+  },
+  {
+    "source": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "title": "Create rich, custom tooltips in Amazon Quick Sight",
+    "link": "https://aws.amazon.com/blogs/machine-learning/create-rich-custom-tooltips-in-amazon-quick-sight/",
+    "published": "Wed, 15 Apr 2026 15:22:53 +0000",
+    "author": "Meshan Khosla",
+    "summary": "Today, we're announcing sheet tooltips in Amazon Quick Sight. Dashboard authors can now design custom tooltip layouts using free-form layout sheets. These layouts combine charts, key performance indicator (KPI) metrics, text, and other visuals into a single tooltip that renders dynamically when readers hover over data points",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 2,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 2,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 11
+    }
+  },
+  {
+    "source": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "title": "How Guidesly built AI-generated trip reports for outdoor guides on AWS",
+    "link": "https://aws.amazon.com/blogs/machine-learning/how-guidesly-built-ai-generated-trip-reports-for-outdoor-guides-on-aws/",
+    "published": "Tue, 14 Apr 2026 18:02:56 +0000",
+    "author": "David Lord, Taylor Lord, Shiva Prasad, Anup Banasavalli Hiriyanagowda, Nikhil Chandra",
+    "summary": "In this post, we walk through how Guidesly built Jack AI on AWS using AWS Lambda, AWS Step Functions, Amazon Simple Storage Service (Amazon S3), Amazon Relational Database Service (Amazon RDS), Amazon SageMaker AI, and Amazon Bedrock to ingest trip media, enrich it with context, apply computer vision and generative AI, and publish marketing-ready content across multiple channels—securely, reliably, and at scale",
+    "scores": {
+      "business_impact": 2,
+      "practical_application": 2,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 2,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 11
+    }
+  },
+  {
+    "source": "Towards Data Science",
+    "feed_url": "https://towardsdatascience.com/feed",
+    "title": "Your Chunks Failed Your RAG in Production",
+    "link": "https://towardsdatascience.com/your-chunks-failed-your-rag-in-production/",
+    "published": "Thu, 16 Apr 2026 16:30:00 +0000",
+    "author": "Priyansh Bhardwaj",
+    "summary": "The upstream decision no model, or LLM can fix once you get it wrong",
+    "scores": {
+      "business_impact": 2,
+      "practical_application": 2,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 10
+    }
+  },
+  {
+    "source": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "title": "Use-case based deployments on SageMaker JumpStart",
+    "link": "https://aws.amazon.com/blogs/machine-learning/use-case-based-deployments-on-sagemaker-jumpstart/",
+    "published": "Tue, 14 Apr 2026 18:14:54 +0000",
+    "author": "Dan Ferguson",
+    "summary": "We're excited to announce the launch of Amazon SageMaker JumpStart optimized deployments. SageMaker JumpStart improved deployments address the need for rich and straightforward deployment customization on SageMaker JumpStart by offering pre-defined deployment configurations, designed for specific use cases. Customers maintain the same level of visibility into the details of their proposed deployments, but now deployments are optimized for their specific use case and performance constraint",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 2,
+      "signal_strength": 2,
+      "category_priority": 1,
+      "source_credibility": 2,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "business_upskilling_bonus": 0,
+      "total_score": 10
+    }
+  }
+]
