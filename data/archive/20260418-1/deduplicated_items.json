@@ -1,0 +1,142 @@
+[
+  {
+    "source": "FT Technology",
+    "feed_url": "https://www.ft.com/technology?format=rss",
+    "title": "The risks of Mythos are no myth",
+    "link": "https://www.ft.com/content/f07ffad1-8453-48c9-b801-2fcb0c0daf58",
+    "published": "Fri, 17 Apr 2026 17:27:47 GMT",
+    "author": null,
+    "summary": "America is putting too much trust in the AI industry’s ability to police itself",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 1,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 3,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "total_score": 12
+    }
+  },
+  {
+    "source": "MIT Technology Review",
+    "feed_url": "https://www.technologyreview.com/feed/",
+    "title": "Making AI operational in constrained public sector environments",
+    "link": "https://www.technologyreview.com/2026/04/16/1135216/making-ai-operational-in-constrained-public-sector-environments/",
+    "published": "Thu, 16 Apr 2026 13:00:00 +0000",
+    "author": "MIT Technology Review Insights",
+    "summary": "The AI boom has hit across industries, and public sector organizations are facing pressure to accelerate adoption. At the same time, government institutions face distinct constraints around security, governance, and operations that set them apart from their business counterparts. For this reason, purpose-built small language models (SLMs) offer a promising path to operationalize AI in…",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 2,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 3,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "total_score": 12
+    }
+  },
+  {
+    "source": "KDnuggets",
+    "feed_url": "https://www.kdnuggets.com/feed",
+    "title": "5 Useful Python Scripts for Advanced Data Validation & Quality Checks",
+    "link": "https://www.kdnuggets.com/5-useful-python-scripts-for-advanced-data-validation-quality-checks",
+    "published": "Fri, 17 Apr 2026 12:00:58 +0000",
+    "author": "Bala Priya C",
+    "summary": "From missing values to schema mismatches, data issues appear in many forms. These five Python scripts provide smart, automated validation for modern data workflows.",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 3,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "total_score": 11
+    }
+  },
+  {
+    "source": "KDnuggets",
+    "feed_url": "https://www.kdnuggets.com/feed",
+    "title": "Collaborative AI Systems: Human-AI Teaming Workflows",
+    "link": "https://www.kdnuggets.com/collaborative-ai-systems-human-ai-teaming-workflows",
+    "published": "Tue, 14 Apr 2026 14:00:31 +0000",
+    "author": "Nate Rosidi",
+    "summary": "Everyone says they're \"collaborating\" with AI. Most are just giving orders and accepting whatever comes back.",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 3,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "total_score": 11
+    }
+  },
+  {
+    "source": "Towards Data Science",
+    "feed_url": "https://towardsdatascience.com/feed",
+    "title": "Beyond Prompting: Using Agent Skills in Data Science",
+    "link": "https://towardsdatascience.com/beyond-prompting-using-agent-skills-in-data-science/",
+    "published": "Fri, 17 Apr 2026 16:30:00 +0000",
+    "author": "Yu Dong",
+    "summary": "How I turned my eight-year weekly visualization habit into a reusable AI workflow",
+    "scores": {
+      "business_impact": 2,
+      "practical_application": 2,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 1,
+      "total_score": 10
+    }
+  },
+  {
+    "source": "Towards Data Science",
+    "feed_url": "https://towardsdatascience.com/feed",
+    "title": "Your Chunks Failed Your RAG in Production",
+    "link": "https://towardsdatascience.com/your-chunks-failed-your-rag-in-production/",
+    "published": "Thu, 16 Apr 2026 16:30:00 +0000",
+    "author": "Priyansh Bhardwaj",
+    "summary": "The upstream decision no model, or LLM can fix once you get it wrong",
+    "scores": {
+      "business_impact": 2,
+      "practical_application": 2,
+      "signal_strength": 2,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "total_score": 10
+    }
+  },
+  {
+    "source": "KDnuggets",
+    "feed_url": "https://www.kdnuggets.com/feed",
+    "title": "NotebookLM for the Creative Architect",
+    "link": "https://www.kdnuggets.com/notebooklm-for-the-creative-architect",
+    "published": "Wed, 15 Apr 2026 16:00:27 +0000",
+    "author": "Matthew Mayo",
+    "summary": "If you are looking to optimize your creative and productivity workflows, here are the five features in NotebookLM that matter most right now.",
+    "scores": {
+      "business_impact": 3,
+      "practical_application": 2,
+      "signal_strength": 1,
+      "category_priority": 3,
+      "source_credibility": 1,
+      "fmcg_bonus": 0,
+      "adjacent_industry_bonus": 0,
+      "core_region_bonus": 0,
+      "total_score": 10
+    }
+  }
+]
